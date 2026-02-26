@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cenote Land Co. — Terrenos listos en la costa de Yucatán</title>
+    <meta name="description" content="Terrenos escriturados en privada con cenotes naturales, a 4 km de la playa en Telchac Puerto, Yucatán. Entrega inmediata. Desde $550k MXN.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --stone: #2C2825;
+            --sand: #F5F0EB;
+            --sand-dark: #E8E0D6;
+            --cenote: #1A6B5A;
+            --cenote-light: #228B74;
+            --warm: #A67C52;
+            --warm-light: #C9A87C;
+            --white: #FEFCFA;
+            --text: #3A3530;
+            --text-light: #7A7067;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+
+        nav { position: fixed; top: 0; width: 100%; z-index: 100; padding: 1.2rem 2rem; display: flex; justify-content: space-between; align-items: center; transition: background 0.4s, box-shadow 0.4s; }
+        nav.scrolled { background: rgba(254,252,250,0.95); backdrop-filter: blur(10px); box-shadow: 0 1px 20px rgba(0,0,0,0.06); }
+        .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 700; color: var(--white); letter-spacing: 0.02em; transition: color 0.4s; }
+        nav.scrolled .logo { color: var(--stone); }
+        .nav-cta { display: inline-block; padding: 0.6rem 1.6rem; background: var(--cenote); color: var(--white); text-decoration: none; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.04em; border-radius: 2px; transition: background 0.3s; }
+        .nav-cta:hover { background: var(--cenote-light); }
+
+        .hero { position: relative; height: 100vh; min-height: 700px; display: flex; align-items: flex-end; padding: 2rem; overflow: hidden; }
+        .hero-bg { position: absolute; inset: 0; background-image: url('images/hero.jpg'); background-size: cover; background-position: center; }
+        .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.25) 40%, rgba(0,0,0,0.1) 100%); }
+        .hero-content { position: relative; z-index: 2; max-width: 780px; padding-bottom: 4rem; animation: fadeUp 1s ease-out; }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .hero-tag { display: inline-block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--warm-light); margin-bottom: 1.2rem; padding: 0.4rem 1rem; border: 1px solid rgba(201,168,124,0.4); }
+        .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 700; color: var(--white); line-height: 1.15; margin-bottom: 1.2rem; }
+        .hero p { font-size: 1.1rem; color: rgba(255,255,255,0.85); max-width: 560px; margin-bottom: 2rem; line-height: 1.7; }
+        .hero-cta { display: inline-flex; align-items: center; gap: 0.6rem; padding: 1rem 2.2rem; background: var(--cenote); color: var(--white); text-decoration: none; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.03em; border-radius: 2px; transition: background 0.3s, transform 0.2s; }
+        .hero-cta:hover { background: var(--cenote-light); transform: translateY(-1px); }
+        .hero-cta svg { width: 18px; height: 18px; }
+
+        .scarcity-bar { background: var(--stone); padding: 1rem 2rem; text-align: center; color: var(--warm-light); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+
+        section { padding: 5rem 2rem; }
+        .section-inner { max-width: 1080px; margin: 0 auto; }
+        .section-tag { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--cenote); margin-bottom: 0.8rem; }
+        .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 700; color: var(--stone); line-height: 1.2; margin-bottom: 1.2rem; }
+        .section-subtitle { font-size: 1.05rem; color: var(--text-light); max-width: 600px; line-height: 1.7; }
+
+        .features { background: var(--sand); }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .feature-card { background: var(--white); padding: 2rem; border-radius: 3px; border: 1px solid var(--sand-dark); transition: box-shadow 0.3s, transform 0.2s; }
+        .feature-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.06); transform: translateY(-2px); }
+        .feature-icon { width: 40px; height: 40px; background: var(--cenote); border-radius: 2px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.2rem; }
+        .feature-icon svg { width: 20px; height: 20px; color: var(--white); }
+        .feature-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 700; color: var(--stone); margin-bottom: 0.6rem; }
+        .feature-card p { font-size: 0.9rem; color: var(--text-light); line-height: 1.6; }
+
+        .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem; margin-top: 3rem; }
+        .gallery-item { aspect-ratio: 3/2; border-radius: 3px; overflow: hidden; position: relative; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+        .gallery-item:hover img { transform: scale(1.03); }
+        .gallery-item.wide { grid-column: span 2; }
+
+        .location { background: var(--stone); color: var(--white); }
+        .location .section-tag { color: var(--warm-light); }
+        .location .section-title { color: var(--white); }
+        .location .section-subtitle { color: rgba(255,255,255,0.65); }
+        .distance-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+        .distance-item { padding: 1.5rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 3px; }
+        .distance-value { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 700; color: var(--warm-light); line-height: 1; margin-bottom: 0.4rem; }
+        .distance-label { font-size: 0.85rem; color: rgba(255,255,255,0.6); }
+        .map-container { margin-top: 3rem; border-radius: 3px; overflow: hidden; }
+        .map-container img { width: 100%; height: auto; display: block; }
+
+        .why-now { background: var(--sand); }
+        .timeline { margin-top: 3rem; display: flex; flex-direction: column; }
+        .timeline-item { display: grid; grid-template-columns: 120px 40px 1fr; align-items: start; min-height: 80px; }
+        .timeline-phase { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 700; color: var(--stone); text-align: right; padding-top: 0.15rem; }
+        .timeline-dot-col { display: flex; flex-direction: column; align-items: center; height: 100%; }
+        .timeline-dot { width: 14px; height: 14px; border-radius: 50%; background: var(--sand-dark); border: 3px solid var(--text-light); flex-shrink: 0; margin-top: 0.3rem; }
+        .timeline-dot.active { background: var(--cenote); border-color: var(--cenote); }
+        .timeline-dot.yours { background: var(--warm); border-color: var(--warm); box-shadow: 0 0 0 4px rgba(166,124,82,0.25); }
+        .timeline-line { width: 2px; flex-grow: 1; background: var(--sand-dark); margin-top: 0.3rem; }
+        .timeline-content { padding: 0 0 2rem 1rem; }
+        .timeline-content p { font-size: 0.9rem; color: var(--text-light); line-height: 1.5; }
+        .timeline-content .highlight { color: var(--cenote); font-weight: 600; }
+        .timeline-content .yours-highlight { color: var(--warm); font-weight: 600; }
+
+        .process-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .step { text-align: center; padding: 1.5rem; }
+        .step-number { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 700; color: var(--cenote); line-height: 1; margin-bottom: 0.8rem; }
+        .step h3 { font-size: 1rem; font-weight: 600; color: var(--stone); margin-bottom: 0.5rem; }
+        .step p { font-size: 0.85rem; color: var(--text-light); line-height: 1.6; }
+
+        .final-cta { background: var(--cenote); text-align: center; padding: 5rem 2rem; }
+        .final-cta .section-title { color: var(--white); max-width: 600px; margin: 0 auto 0.8rem; }
+        .final-cta p { color: rgba(255,255,255,0.75); font-size: 1rem; margin-bottom: 2rem; }
+        .cta-whatsapp { display: inline-flex; align-items: center; gap: 0.6rem; padding: 1.1rem 2.5rem; background: var(--white); color: var(--cenote); text-decoration: none; font-size: 1rem; font-weight: 600; letter-spacing: 0.02em; border-radius: 2px; transition: transform 0.2s, box-shadow 0.3s; }
+        .cta-whatsapp:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.2); }
+        .cta-whatsapp svg { width: 20px; height: 20px; }
+
+        footer { background: var(--stone); padding: 2rem; text-align: center; color: rgba(255,255,255,0.35); font-size: 0.75rem; }
+
+        @media (max-width: 768px) {
+            .hero { min-height: 600px; }
+            .hero-content { padding-bottom: 2rem; }
+            section { padding: 3.5rem 1.5rem; }
+            .timeline-item { grid-template-columns: 90px 30px 1fr; }
+            .distance-grid { grid-template-columns: repeat(2, 1fr); }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .gallery-item.wide { grid-column: span 2; }
+        }
+        @media (max-width: 480px) {
+            nav { padding: 1rem 1.2rem; }
+            .logo { font-size: 1.2rem; }
+            .hero h1 { font-size: 2rem; }
+            .timeline-item { grid-template-columns: 70px 30px 1fr; }
+            .timeline-phase { font-size: 0.95rem; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .gallery-item.wide { grid-column: span 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="nav">
+        <div class="logo">Cenote Land Co.</div>
+        <!-- TODO: Reemplazar # con link de WhatsApp: https://wa.me/521XXXXXXXXXX -->
+        <a href="#contacto" class="nav-cta">Contáctanos</a>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="hero-tag">Solo 2 lotes disponibles</span>
+            <h1>Tu terreno en la costa de Yucatán. Escriturado y listo para construir.</h1>
+            <p>Lotes en privada residencial con 3 cenotes naturales, a 4 km de la playa de Telchac Puerto. La primera etapa se agotó — estos son los últimos dos.</p>
+            <a href="#contacto" class="hero-cta">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Escríbenos por WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <div class="scarcity-bar">
+        Etapa 1 agotada · Solo 2 lotes en reventa · Escriturados · Construye de inmediato
+    </div>
+
+    <section class="features" id="caracteristicas">
+        <div class="section-inner">
+            <div class="section-tag">Qué incluye</div>
+            <h2 class="section-title">No es preventa. No es promesa.<br>Tu terreno está listo hoy.</h2>
+            <p class="section-subtitle">Ambos lotes son de Etapa 1 — entregados, urbanizados y escriturados. Puedes construir desde el día que cierras.</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg></div>
+                    <h3>Escriturado</h3>
+                    <p>Escritura pública en mano. Título limpio verificado en el Registro Público de la Propiedad. Sin sorpresas legales.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z"/></svg></div>
+                    <h3>Urbanizado</h3>
+                    <p>Calles de concreto, electricidad a pie de lote, red de agua potable, alumbrado público, banquetas. Todo entregado y funcionando.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/></svg></div>
+                    <h3>Privada con seguridad</h3>
+                    <p>Vigilancia 24/7, barda perimetral, cerco eléctrico, acceso con huella digital, cámaras. Ya en operación.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/></svg></div>
+                    <h3>3 cenotes naturales</h3>
+                    <p>El desarrollo cuenta con tres cenotes naturales dentro de sus terrenos — una maravilla geológica exclusiva de la Península de Yucatán.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z"/></svg></div>
+                    <h3>+50 amenidades</h3>
+                    <p>Casa club, canchas deportivas, circuito de bicicletas, parque aventurero, parque holístico, área de mascotas, zona de picnic, juegos infantiles y más.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+                    <h3>Desde $550,000 MXN</h3>
+                    <p>Compra directa de contado. Precio competitivo por un terreno entregado y escriturado en privada premium cerca de la costa. Mantenimiento: $1,000/mes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="galeria">
+        <div class="section-inner">
+            <div class="section-tag">El desarrollo</div>
+            <h2 class="section-title">Conócelo</h2>
+            <p class="section-subtitle">Aldea Balhá es una privada residencial de 33 hectáreas con más de 950 lotes en 4 etapas. La Etapa 1 ya está entregada y habitada.</p>
+            <div class="gallery-grid">
+                <div class="gallery-item wide">
+                    <img src="images/cenote.jpg" alt="Cenote natural en Aldea Balhá">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/entrance.jpg" alt="Entrada principal de Aldea Balhá">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/amenities.jpg" alt="Jardín de eventos con alberca">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/cenote2.jpg" alt="Zona de descanso junto al cenote">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/cabin.jpg" alt="Cabaña con alberca privada">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/holistic.jpg" alt="Parque holístico">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/jacuzzi.jpg" alt="Zona de jacuzzi">
+                </div>
+                <div class="gallery-item wide">
+                    <img src="images/events.jpg" alt="Jardín de eventos y zona familiar">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="location" id="ubicacion">
+        <div class="section-inner">
+            <div class="section-tag">Ubicación</div>
+            <h2 class="section-title">Cerca de la costa. Conectado con la ciudad.</h2>
+            <p class="section-subtitle">Sobre la carretera principal a Telchac Puerto, uno de los destinos costeros más visitados de Yucatán — a menos de una hora de Mérida.</p>
+            <div class="distance-grid">
+                <div class="distance-item">
+                    <div class="distance-value">4 km</div>
+                    <div class="distance-label">a la playa (Telchac Puerto)</div>
+                </div>
+                <div class="distance-item">
+                    <div class="distance-value">45 min</div>
+                    <div class="distance-label">a Mérida (centro)</div>
+                </div>
+                <div class="distance-item">
+                    <div class="distance-value">55 min</div>
+                    <div class="distance-label">al Aeropuerto de Mérida</div>
+                </div>
+                <div class="distance-item">
+                    <div class="distance-value">2 km</div>
+                    <div class="distance-label">a Telchac Pueblo (servicios)</div>
+                </div>
+            </div>
+            <div class="map-container">
+                <img src="images/map.png" alt="Mapa de ubicación de Aldea Balhá — Mérida a Telchac Puerto">
+            </div>
+        </div>
+    </section>
+
+    <section class="why-now" id="por-que-ahora">
+        <div class="section-inner">
+            <div class="section-tag">Por qué ahora</div>
+            <h2 class="section-title">Todos los demás están esperando. Tú no tienes que hacerlo.</h2>
+            <p class="section-subtitle">Las nuevas etapas no se entregan hasta 2026–2027. Estos lotes de Etapa 1 están listos hoy.</p>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-phase">Etapa 1</div>
+                    <div class="timeline-dot-col"><div class="timeline-dot active"></div><div class="timeline-line"></div></div>
+                    <div class="timeline-content"><p><span class="highlight">Entregada y agotada.</span> Urbanizada, operativa, residentes ya construyendo.</p></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-phase">Estos lotes</div>
+                    <div class="timeline-dot-col"><div class="timeline-dot yours"></div><div class="timeline-line"></div></div>
+                    <div class="timeline-content"><p><span class="yours-highlight">Solo 2 disponibles.</span> Reventas de Etapa 1 — escriturados, entregados, listos para construir ya.</p></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-phase">Etapa 2</div>
+                    <div class="timeline-dot-col"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
+                    <div class="timeline-content"><p>Entrega prevista diciembre 2025. En desarrollo.</p></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-phase">Etapa 3</div>
+                    <div class="timeline-dot-col"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
+                    <div class="timeline-content"><p>Entrega prevista diciembre 2026. Solo preventa.</p></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-phase">Etapa 4</div>
+                    <div class="timeline-dot-col"><div class="timeline-dot"></div></div>
+                    <div class="timeline-content"><p>Entrega prevista diciembre 2027. Solo preventa.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="proceso">
+        <div class="section-inner">
+            <div class="section-tag">Proceso de compra</div>
+            <h2 class="section-title">Directo, legal, transparente.</h2>
+            <p class="section-subtitle">Compra de contado con escrituración inmediata. Así de simple.</p>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">01</div>
+                    <h3>Elige tu lote</h3>
+                    <p>Revisa los lotes disponibles, fotos y documentación. Te proporcionamos verificación de título y cumplimiento municipal.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">02</div>
+                    <h3>Revisión legal</h3>
+                    <p>Búsqueda de título en el Registro Público de la Propiedad. Coordinamos con notario público para la escrituración.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">03</div>
+                    <h3>Firma y cierra</h3>
+                    <p>Escritura ante notario público. La propiedad queda a tu nombre. El proceso completo toma 4–6 semanas.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">04</div>
+                    <h3>Construye cuando quieras</h3>
+                    <p>Tu lote está entregado con todos los servicios. Construye tu casa, renta vacacional, o mantenlo como inversión.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="final-cta" id="contacto">
+        <h2 class="section-title">¿Listo para tener tu terreno en la costa yucateca?</h2>
+        <p>Solo 2 lotes de Etapa 1 disponibles. Escríbenos — sin compromiso.</p>
+        <!-- TODO: Reemplazar # con link de WhatsApp: https://wa.me/521XXXXXXXXXX?text=Hola,%20me%20interesan%20los%20lotes%20de%20Etapa%201 -->
+        <a href="#" class="cta-whatsapp">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Escríbenos por WhatsApp
+        </a>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Cenote Land Co. · Mérida, Yucatán, México</p>
+    </footer>
+
+    <script>
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 80);
+        });
+    </script>
+</body>
+</html>
